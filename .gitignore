@@ -4,6 +4,9 @@ node_modules/
 # Build output
 dist/
 
+# Compiled demo files
+marketing-demo.js
+
 # Logs
 *.log
 npm-debug.log*

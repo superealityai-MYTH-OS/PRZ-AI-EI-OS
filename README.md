@@ -46,6 +46,57 @@ const result = await runPrzPipeline("Analyze my data and create a report");
 console.log(result.tier); // "GREEN LANE" or "MONITORED"
 ```
 
+### User Feedback Feature - Complete-Then-Validate
+
+The user feedback system implements Pillar 1 (Complete-Then-Validate) by allowing users to provide feedback after artifact delivery:
+
+```typescript
+import { runPrzPipelineWithFeedback, UserFeedback } from './lib/pipeline';
+import { createEmotionalIntelligence } from './src/index';
+
+// Step 1: Deliver complete artifact
+const result = await runPrzPipelineWithFeedback(
+  "Create a React component for user authentication"
+);
+
+// Step 2: User provides feedback
+const feedback: UserFeedback = {
+  id: 'feedback-1',
+  artifactId: result.artifactId,
+  sentiment: 'positive',
+  type: 'completeness',
+  comment: 'This is perfect! Exactly what I needed.',
+  confidence: 0.95,
+  intensity: 0.9,
+  timestamp: Date.now()
+};
+
+// Step 3: Process feedback and adjust resonance
+const resultWithFeedback = await runPrzPipelineWithFeedback(
+  "Create a React component for user authentication",
+  feedback
+);
+
+console.log(resultWithFeedback.adjustedResonance); // Updated resonance based on feedback
+console.log(resultWithFeedback.stateTransition); // Vapor ↔ Crystal state changes
+```
+
+**Run the feedback demo:**
+```bash
+npm run build
+npx tsc feedback-demo.ts --outDir . --module commonjs --target ES2020 --esModuleInterop --skipLibCheck
+node feedback-demo.js
+```
+
+The feedback system demonstrates all Seven Pillars:
+- ✅ **Complete-Then-Validate**: Delivers artifact first, then collects feedback
+- ✅ **Resonance Threshold**: Adjusts resonance based on feedback quality (±0.05-0.20)
+- ✅ **GOOSEGUARD**: Detects contradictory feedback patterns to prevent loops
+- ✅ **ZAK Echo Registry**: Uses feedback pattern registry for improvement suggestions
+- ✅ **Vapor ↔ Crystal**: Triggers state transitions based on feedback resonance
+- ✅ **Harmonic Field**: Matches feedback patterns to improvement actions
+- ✅ **Green Lane**: Maintains autonomous execution with validated feedback
+
 ### Marketing Agent - Find Resonant Developers
 
 The marketing agent autonomously finds developers who resonate with PRZ vision:

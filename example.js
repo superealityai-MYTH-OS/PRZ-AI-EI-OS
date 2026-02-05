@@ -3,7 +3,7 @@
  * Demonstrates the emotional intelligence capabilities
  */
 
-const { EmotionalIntelligence } = require('./dist/emotional-intelligence');
+const { EmotionalIntelligence } = require('./dist/src/emotional-intelligence');
 
 console.log('PRZ-AI-EI-OS - Emotional Intelligence Demo\n');
 console.log('='.repeat(50));

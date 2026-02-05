@@ -8,6 +8,9 @@ dist/
 *.js
 !example.js
 
+# TypeScript declaration files (build artifacts)
+*.d.ts
+
 # Source maps
 *.map
 

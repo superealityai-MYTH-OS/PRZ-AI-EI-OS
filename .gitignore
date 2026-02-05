@@ -4,8 +4,12 @@ node_modules/
 # Build output
 dist/
 
-# Compiled demo files
-marketing-demo.js
+# Compiled files (TypeScript to JavaScript)
+*.js
+!example.js
+
+# Source maps
+*.map
 
 # Logs
 *.log

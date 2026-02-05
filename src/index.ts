@@ -3,6 +3,7 @@
  * Main entry point
  */
 
+import { EmotionalIntelligence as EI } from './emotional-intelligence';
 export { EmotionalIntelligence, EmotionalState, EmotionalContext } from './emotional-intelligence';
 
 // Version information
@@ -13,6 +14,5 @@ export const VERSION = '1.0.0';
  * @returns A new EmotionalIntelligence instance
  */
 export function createEmotionalIntelligence() {
-  const { EmotionalIntelligence } = require('./emotional-intelligence');
-  return new EmotionalIntelligence();
+  return new EI();
 }

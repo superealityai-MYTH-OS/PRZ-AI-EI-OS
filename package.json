@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "clean": "rm -rf dist",
+    "clean": "node -e \"try { require('fs').rmSync('dist', { recursive: true, force: true }); } catch (e) {}\"",
     "prebuild": "npm run clean",
     "test": "echo \"No tests specified yet\" && exit 0"
   },

@@ -16,6 +16,12 @@ export interface EmotionalContext {
 
 export class EmotionalIntelligence {
   private history: EmotionalState[] = [];
+  
+  // Constants for emotion analysis
+  private readonly INTENSITY_SCALE_FACTOR = 3; // Keywords needed for maximum intensity
+  private readonly BASE_CONFIDENCE = 0.7; // Baseline confidence level
+  private readonly CONFIDENCE_INCREMENT = 0.1; // Confidence boost per keyword difference
+  private readonly MAX_CONFIDENCE = 1.0; // Maximum confidence cap
 
   /**
    * Analyzes emotional context from user input
@@ -47,10 +53,10 @@ export class EmotionalIntelligence {
     
     if (positiveCount > negativeCount) {
       sentiment = 'positive';
-      intensity = Math.min(positiveCount / 3, 1);
+      intensity = Math.min(positiveCount / this.INTENSITY_SCALE_FACTOR, 1);
     } else if (negativeCount > positiveCount) {
       sentiment = 'negative';
-      intensity = Math.min(negativeCount / 3, 1);
+      intensity = Math.min(negativeCount / this.INTENSITY_SCALE_FACTOR, 1);
     } else {
       sentiment = 'neutral';
       intensity = 0.5;
@@ -58,7 +64,10 @@ export class EmotionalIntelligence {
     
     const emotionalState: EmotionalState = {
       sentiment,
-      confidence: 0.7 + (Math.abs(positiveCount - negativeCount) * 0.1),
+      confidence: Math.min(
+        this.BASE_CONFIDENCE + (Math.abs(positiveCount - negativeCount) * this.CONFIDENCE_INCREMENT),
+        this.MAX_CONFIDENCE
+      ),
       intensity
     };
     

@@ -76,7 +76,11 @@ When adding new ZAK Echoes to `lib/zak-echoes.ts`:
 
 ## Testing Requirements
 - **Framework**: Tests will use standard Node.js testing when implemented
-- **Coverage**: Aim for ≥ 80% code coverage for new features
+- **Coverage Targets**:
+  - Core PRZ framework modules (`lib/prz/`): ≥ 90%
+  - Main business logic (`src/`): ≥ 85%
+  - Utilities and pipelines (`lib/`): ≥ 80%
+  - Integration and orchestration code: ≥ 70%
 - **Test Types**:
   - Unit tests for individual functions and classes
   - Integration tests for pipeline workflows
@@ -147,5 +151,6 @@ This project operates in the **Green Lane**:
 - Move ideas from Vapor to Crystal through validation
 
 ---
-Part of the Super Reality OS project.
+Part of the **Super Reality OS** project ecosystem.
+The Post-Reality Zone (PRZ) Operating System is a component of the broader Super Reality AI initiative.
 For more details, see [CONTRIBUTING.md](../CONTRIBUTING.md) and [README.md](../README.md).

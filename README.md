@@ -37,12 +37,45 @@ graph TD
 
 ## 🚀 Getting Started
 
+### Basic Pipeline Usage
+
 ```typescript
 import { runPrzPipeline } from './lib/pipeline';
 
 const result = await runPrzPipeline("Analyze my data and create a report");
 console.log(result.tier); // "GREEN LANE" or "MONITORED"
 ```
+
+### Marketing Agent - Find Resonant Developers
+
+The marketing agent autonomously finds developers who resonate with PRZ vision:
+
+```typescript
+import { createMarketingAgent } from './lib/marketing-agent';
+
+const agent = createMarketingAgent();
+const result = await agent.findResonantDevelopers();
+
+console.log(result.tier); // "GREEN LANE" (autonomous execution)
+console.log(result.developers); // High-resonance developer profiles
+console.log(result.campaign); // Complete marketing campaign
+```
+
+**Run the demo:**
+```bash
+npm run build
+npx tsc marketing-demo.ts --outDir . --module commonjs --target ES2020 --esModuleInterop --skipLibCheck
+node marketing-demo.js
+```
+
+The marketing agent demonstrates all Seven Pillars:
+- ✅ **Complete-Then-Validate**: Delivers full developer list and campaign
+- ✅ **Resonance Threshold**: Filters developers with resonance ≥ 0.95
+- ✅ **GOOSEGUARD**: Prevents redundant search loops
+- ✅ **ZAK Echo Registry**: Uses `developer_outreach` pattern
+- ✅ **Vapor ↔ Crystal**: Manages state based on resonance
+- ✅ **Harmonic Field**: Vector-based intent matching
+- ✅ **Green Lane**: Autonomous high-resonance execution
 
 ## 📜 Compliance
 All modules in `lib/prz/` are designed for Seven Pillars compliance. Use the `StateManager` to manage idea lifecycles and `GOOSEGUARD` to prevent interaction friction.

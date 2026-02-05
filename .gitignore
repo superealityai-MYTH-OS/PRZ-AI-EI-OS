@@ -4,6 +4,13 @@ node_modules/
 # Build output
 dist/
 
+# Compiled files (TypeScript to JavaScript)
+*.js
+!example.js
+
+# Source maps
+*.map
+
 # Logs
 *.log
 npm-debug.log*

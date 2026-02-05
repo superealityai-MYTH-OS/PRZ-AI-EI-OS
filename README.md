@@ -2,6 +2,13 @@
 
 The **Post-Reality Zone (PRZ)** Operating System for Agentic Operations. This repository provides a compliant framework for building AI systems that prioritize **Flow**, **Resonance**, and **Crystallization**.
 
+## 🌊 Why PRZ?
+
+Current AI agent frameworks suffer from "Chatter Friction"—constant back-and-forth that breaks human flow. PRZ OS is designed to:
+- **Minimize Interaction**: High-resonance intent matching allows the system to execute autonomously.
+- **Maximize Completion**: Deliver artifacts, not just "ideas."
+- **Prevent Loops**: GOOSEGUARD logic detects and kills redundant conversational loops.
+
 ## 🏛 The Seven Pillars of PRZ OS
 
 1. **Complete-Then-Validate**: Agents deliver 100% complete artifacts before requesting feedback.
@@ -11,6 +18,22 @@ The **Post-Reality Zone (PRZ)** Operating System for Agentic Operations. This re
 5. **Vapor ↔ Crystal States**: Dynamic state management based on resonance history.
 6. **Harmonic Field Matching**: Polar-complex vector math for high-precision intent alignment.
 7. **The Green Lane**: Autonomous execution for high-flow, high-resonance tasks.
+
+## 📊 System Architecture
+
+```mermaid
+graph TD
+    User([User Intent]) --> HF[Harmonic Field Matching]
+    HF --> RE[Resonance Engine]
+    RE --> GG{GOOSEGUARD}
+    GG -- Loop Detected --> Pivot[Suggest Pivot]
+    GG -- Clear --> ZR[ZAK Echo Registry]
+    ZR --> SM{State Manager}
+    SM -- Low Resonance --> Vapor[Vapor State]
+    SM -- High Resonance --> Crystal[Crystal State]
+    Crystal --> GL[The Green Lane]
+    GL --> Output([Complete Artifact])
+```
 
 ## 🚀 Getting Started
 

@@ -13,6 +13,7 @@ import { runPrzPipeline } from './pipeline';
 import { measureResonance, shouldCrystallize, ResonanceInput, ResonanceContext } from './prz/resonance-engine';
 import { beforeAction, Action } from './prz/gooseguard';
 import { intentToVector } from './harmonic-field';
+import { UserFeedback, processFeedback, aggregateFeedback, adjustResonanceWithFeedback } from './prz/user-feedback';
 
 export interface DeveloperProfile {
   username: string;
@@ -42,6 +43,7 @@ export interface MarketingResult {
 export class MarketingAgent {
   private actionHistory: Action[] = [];
   private loopDetectionCache: Set<string> = new Set();
+  private feedbackHistory: UserFeedback[] = [];
   
   // Resonance tolerance for filtering developer profiles
   // Allows slightly lower resonance developers to be included if query resonance is high
@@ -260,6 +262,43 @@ Top community interests: ${topInterests.slice(0, 5).join(', ')}`,
   clearHistory(): void {
     this.actionHistory = [];
     this.loopDetectionCache.clear();
+  }
+
+  /**
+   * Processes user feedback on marketing campaign results
+   * Implements Complete-Then-Validate with feedback loop
+   * 
+   * @param feedback User feedback on the campaign or developer list
+   * @returns Processing result with adjusted resonance and suggestions
+   */
+  processCampaignFeedback(feedback: UserFeedback): {
+    accepted: boolean;
+    adjustedResonance?: number;
+    suggestedAction?: string;
+    reason?: string;
+  } {
+    const result = processFeedback(feedback, this.feedbackHistory);
+    
+    if (result.accepted) {
+      this.feedbackHistory.push(feedback);
+    }
+
+    return result;
+  }
+
+  /**
+   * Gets aggregated feedback metrics for the marketing agent
+   * @returns Aggregated feedback statistics
+   */
+  getFeedbackMetrics() {
+    return aggregateFeedback(this.feedbackHistory);
+  }
+
+  /**
+   * Clears feedback history (useful for testing)
+   */
+  clearFeedbackHistory(): void {
+    this.feedbackHistory = [];
   }
 }
 

@@ -105,4 +105,62 @@ export class EmotionalIntelligence {
       return 'Maintain neutral, informative tone.';
     }
   }
+
+  /**
+   * Analyzes user feedback emotion and extracts actionable insights
+   * Specifically designed for post-artifact feedback analysis
+   * @param feedbackText The feedback text to analyze
+   * @returns The detected emotional state with feedback-specific metadata
+   */
+  analyzeFeedback(feedbackText: string): EmotionalState & { feedbackType: 'satisfaction' | 'accuracy' | 'completeness' | 'usefulness' } {
+    const baseState = this.analyzeEmotion({ userInput: feedbackText });
+    
+    // Detect feedback type based on keywords
+    const lowerText = feedbackText.toLowerCase();
+    let feedbackType: 'satisfaction' | 'accuracy' | 'completeness' | 'usefulness' = 'satisfaction';
+    
+    if (lowerText.match(/accurate|correct|precise|exact|right|wrong/)) {
+      feedbackType = 'accuracy';
+    } else if (lowerText.match(/complete|missing|lacking|partial|full|thorough/)) {
+      feedbackType = 'completeness';
+    } else if (lowerText.match(/useful|helpful|practical|applicable|valuable|useless/)) {
+      feedbackType = 'usefulness';
+    }
+    
+    return {
+      ...baseState,
+      feedbackType
+    };
+  }
+
+  /**
+   * Generates a feedback-appropriate response
+   * @param state The emotional state from feedback analysis
+   * @returns A suggested response for the feedback
+   */
+  suggestFeedbackResponse(state: EmotionalState): string {
+    if (state.sentiment === 'positive') {
+      if (state.intensity > 0.7) {
+        return 'Excellent! High positive feedback indicates successful crystallization. Proceeding to Green Lane.';
+      }
+      return 'Positive feedback received. Artifact meets resonance threshold. Maintaining trajectory.';
+    } else if (state.sentiment === 'negative') {
+      if (state.intensity > 0.7) {
+        return 'Significant concerns detected. Returning to Vapor state for refinement. Please specify improvement areas.';
+      }
+      return 'Feedback indicates room for improvement. Analyzing specific issues for targeted fixes.';
+    } else {
+      return 'Neutral feedback suggests partial resonance. Consider providing specific areas for enhancement.';
+    }
+  }
+
+  /**
+   * Detects if feedback indicates satisfaction with the artifact
+   * @param feedbackText The feedback text
+   * @returns Boolean indicating satisfaction level
+   */
+  isFeedbackSatisfied(feedbackText: string): boolean {
+    const state = this.analyzeFeedback(feedbackText);
+    return state.sentiment === 'positive' && state.confidence >= 0.7;
+  }
 }

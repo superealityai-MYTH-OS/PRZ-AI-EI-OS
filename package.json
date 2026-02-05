@@ -1,0 +1,25 @@
+{
+  "name": "prz-ai-ei-os",
+  "version": "1.0.0",
+  "description": "ARTIFICIAL EMOTIONAL INTELLIGENCE FOR GITHUB COPILOT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "test": "echo \"No tests specified yet\" && exit 0"
+  },
+  "keywords": [
+    "artificial-intelligence",
+    "emotional-intelligence",
+    "github-copilot",
+    "ai"
+  ],
+  "author": "superealityai-MYTH-OS",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

@@ -3,6 +3,11 @@
  * Meta-awareness logic to detect and break redundant conversational loops
  */
 
+// Constants for loop detection
+const LOOP_DETECTION_WINDOW_MS = 5 * 60 * 1000; // 5 minutes in milliseconds
+const SIMILARITY_THRESHOLD = 0.85; // Threshold for determining action similarity
+const MAX_SIMILAR_ACTIONS = 3; // Maximum similar actions before triggering loop detection
+
 export interface Action {
   id: string;
   type: string;
@@ -25,7 +30,7 @@ export interface GuardResult {
 export function beforeAction(action: Action, history: Action[]): GuardResult {
   // Check for exact duplicates within a time window (5 minutes)
   const recentActions = history.filter(
-    h => action.timestamp - h.timestamp < 300000
+    h => action.timestamp - h.timestamp < LOOP_DETECTION_WINDOW_MS
   );
 
   // Count similar actions
@@ -35,14 +40,14 @@ export function beforeAction(action: Action, history: Action[]): GuardResult {
     // For requests, check payload similarity
     if (typeof h.payload === 'string' && typeof action.payload === 'string') {
       const similarity = calculateStringSimilarity(h.payload, action.payload);
-      return similarity > 0.85;
+      return similarity > SIMILARITY_THRESHOLD;
     }
     
     return false;
   });
 
   // If we see 3+ similar actions, it's a loop
-  if (similarActions.length >= 3) {
+  if (similarActions.length >= MAX_SIMILAR_ACTIONS) {
     return {
       shouldProceed: false,
       reason: 'GOOSEGUARD: Redundant loop detected. Breaking to preserve flow.',

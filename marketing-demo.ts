@@ -65,10 +65,17 @@ async function runMarketingDemo() {
 
     // Demo 2: Show crystallization status
     console.log('💎 CRYSTALLIZATION STATUS:\n');
-    const avgResonance = result.developers.reduce((sum, dev) => sum + dev.resonanceScore, 0) / result.developers.length;
-    const status = agent.checkCrystallizationStatus(avgResonance);
-    console.log(`State: ${status.state.toUpperCase()}`);
-    console.log(`Reason: ${status.reason}\n`);
+    
+    let avgResonance = 0;
+    if (result.developers.length === 0) {
+      console.log('State: VAPOR');
+      console.log('Reason: No developers found. Cannot calculate resonance.\n');
+    } else {
+      avgResonance = result.developers.reduce((sum, dev) => sum + dev.resonanceScore, 0) / result.developers.length;
+      const status = agent.checkCrystallizationStatus(avgResonance);
+      console.log(`State: ${status.state.toUpperCase()}`);
+      console.log(`Reason: ${status.reason}\n`);
+    }
     
     console.log('='.repeat(70) + '\n');
 

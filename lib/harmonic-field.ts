@@ -3,6 +3,14 @@
  * Polar-complex vector math for high-precision intent alignment
  */
 
+// Weights for combining different scoring components
+const KEYWORD_WEIGHT = 0.4; // Weight for keyword overlap in pattern matching
+const HARMONIC_WEIGHT = 0.4; // Weight for harmonic alignment scoring
+const MAGNITUDE_WEIGHT = 0.2; // Weight for intent magnitude scoring
+
+// Normalization constants
+const TYPICAL_TOKEN_LENGTH = 10; // Expected number of tokens in a typical intent for normalization
+
 /**
  * Calculates pattern match confidence using harmonic field alignment
  * @param userRequest User's request string
@@ -26,7 +34,7 @@ export function calculatePatternMatchConfidence(
   const magnitudeScore = calculateIntentMagnitude(userRequest, pattern);
   
   // Weighted combination
-  return (keywordScore * 0.4) + (harmonicScore * 0.4) + (magnitudeScore * 0.2);
+  return (keywordScore * KEYWORD_WEIGHT) + (harmonicScore * HARMONIC_WEIGHT) + (magnitudeScore * MAGNITUDE_WEIGHT);
 }
 
 /**
@@ -117,7 +125,7 @@ function calculateIntentMagnitude(requestA: string, requestB: string): number {
  */
 export function intentToVector(intent: string): { magnitude: number; direction: number[] } {
   const tokens = tokenize(intent);
-  const magnitude = Math.min(tokens.length / 10, 1); // Normalize by typical length
+  const magnitude = Math.min(tokens.length / TYPICAL_TOKEN_LENGTH, 1); // Normalize by typical length
   
   // Simple directional encoding based on key verbs
   const actionVerbs = ['create', 'build', 'make', 'generate', 'develop'];

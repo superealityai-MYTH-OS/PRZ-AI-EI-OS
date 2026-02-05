@@ -42,6 +42,10 @@ export interface MarketingResult {
 export class MarketingAgent {
   private actionHistory: Action[] = [];
   private loopDetectionCache: Set<string> = new Set();
+  
+  // Resonance tolerance for filtering developer profiles
+  // Allows slightly lower resonance developers to be included if query resonance is high
+  private static readonly RESONANCE_TOLERANCE = 0.05;
 
   /**
    * Finds developers who resonate with PRZ-AI-EI-OS vision
@@ -174,7 +178,8 @@ export class MarketingAgent {
     ];
 
     // Filter based on resonance threshold (Pillar 2)
-    return profiles.filter(p => p.resonanceScore >= (resonanceScore - 0.05));
+    // Use tolerance to include developers slightly below the threshold if overall resonance is high
+    return profiles.filter(p => p.resonanceScore >= (resonanceScore - MarketingAgent.RESONANCE_TOLERANCE));
   }
 
   /**

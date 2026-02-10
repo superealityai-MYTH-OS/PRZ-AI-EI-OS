@@ -1,0 +1,19 @@
+{
+  "dynamodb-local": {
+    "region": "us-east-1",
+    "endpoint": "http://localhost:8000",
+    "accessKeyId": "fakeAccessKeyId",
+    "secretAccessKey": "fakeSecretAccessKey",
+    "comment": "For local DynamoDB development. Install: docker run -p 8000:8000 amazon/dynamodb-local"
+  },
+  "dynamodb-aws": {
+    "region": "us-east-1",
+    "accessKeyId": "YOUR_AWS_ACCESS_KEY_ID",
+    "secretAccessKey": "YOUR_AWS_SECRET_ACCESS_KEY",
+    "comment": "For AWS DynamoDB. Ensure IAM user has DynamoDB permissions"
+  },
+  "dynamodb-iam-role": {
+    "region": "us-east-1",
+    "comment": "Use IAM role credentials (no keys needed when running on EC2/Lambda/ECS)"
+  }
+}

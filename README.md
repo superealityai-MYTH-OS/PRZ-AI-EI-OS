@@ -128,6 +128,53 @@ The marketing agent demonstrates all Seven Pillars:
 - ✅ **Harmonic Field**: Vector-based intent matching
 - ✅ **Green Lane**: Autonomous high-resonance execution
 
+## 🗄️ Database Integrations
+
+PRZ OS includes modular adapters for popular NoSQL databases. Choose the databases that fit your needs:
+
+### Supported Databases
+- **MongoDB** - Flexible document store
+- **Redis** - High-performance caching and real-time data
+- **Apache Cassandra** - Distributed wide-column store
+- **Firebase (Realtime DB & Firestore)** - Real-time sync for mobile/web
+- **Amazon DynamoDB** - Serverless key-value and document store
+- **Couchbase** - High-performance JSON document database
+- **Neo4j** - Graph database for connected data
+
+### Quick Start
+
+```typescript
+import { MongoDBAdapter } from './lib/database';
+
+const db = new MongoDBAdapter({
+  host: 'localhost',
+  port: 27017,
+  database: 'myapp'
+});
+
+await db.connect();
+const userId = await db.insertOne('users', { name: 'John', email: 'john@example.com' });
+const users = await db.find('users', { name: 'John' });
+await db.disconnect();
+```
+
+### Installation
+
+Install only the databases you need:
+
+```bash
+# MongoDB
+npm install mongodb
+
+# Redis  
+npm install redis
+
+# Other databases...
+# See DATABASE.md for complete installation guide
+```
+
+**📖 [Complete Database Documentation →](./DATABASE.md)**
+
 ## 📜 Compliance
 All modules in `lib/prz/` are designed for Seven Pillars compliance. Use the `StateManager` to manage idea lifecycles and `GOOSEGUARD` to prevent interaction friction.
 

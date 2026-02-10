@@ -1,0 +1,26 @@
+{
+  "neo4j": {
+    "uri": "bolt://localhost:7687",
+    "username": "neo4j",
+    "password": "password",
+    "database": "neo4j",
+    "encrypted": false,
+    "comment": "Default Neo4j installation. Change password from default 'neo4j' on first login"
+  },
+  "neo4j-aura": {
+    "uri": "neo4j+s://xxxxx.databases.neo4j.io",
+    "username": "neo4j",
+    "password": "your-password",
+    "database": "neo4j",
+    "encrypted": true,
+    "comment": "Neo4j Aura (cloud) uses encrypted connections with neo4j+s:// protocol"
+  },
+  "neo4j-enterprise": {
+    "uri": "bolt://neo4j-server.company.com:7687",
+    "username": "app_user",
+    "password": "secure-password",
+    "database": "production",
+    "encrypted": true,
+    "comment": "Enterprise Neo4j deployment with custom database"
+  }
+}

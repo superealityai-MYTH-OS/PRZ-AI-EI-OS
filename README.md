@@ -128,6 +128,32 @@ The marketing agent demonstrates all Seven Pillars:
 - ✅ **Harmonic Field**: Vector-based intent matching
 - ✅ **Green Lane**: Autonomous high-resonance execution
 
+### PRZ Agent Orchestrator
+
+Drive end-to-end tasks with feedback-aware state management:
+
+```typescript
+import { createPrzAgent } from './src/index';
+import { UserFeedback } from './lib/prz/user-feedback';
+
+const agent = createPrzAgent();
+const feedback: UserFeedback = {
+  id: 'fb-1',
+  artifactId: 'artifact-123',
+  sentiment: 'positive',
+  type: 'usefulness',
+  comment: 'Great output and very helpful',
+  confidence: 0.9,
+  intensity: 0.8,
+  timestamp: Date.now()
+};
+
+const result = await agent.run('Generate a deployment checklist', { feedback });
+console.log(result.state); // 'crystal' when resonance >= 0.95
+console.log(result.resonanceTrend); // 'up' | 'down' | 'flat'
+console.log(result.feedbackSummary.totalFeedback); // aggregated feedback metrics
+```
+
 ## 🗄️ Database Integrations
 
 PRZ OS includes modular adapters for popular NoSQL databases. Choose the databases that fit your needs:

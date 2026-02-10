@@ -5,6 +5,7 @@
 
 import { EmotionalIntelligence as EI } from './emotional-intelligence';
 export { EmotionalIntelligence, EmotionalState, EmotionalContext } from './emotional-intelligence';
+export { PrzAgent, createPrzAgent } from '../lib/agent';
 
 // Export feedback functionality
 export {

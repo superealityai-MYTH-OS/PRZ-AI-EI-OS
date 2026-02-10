@@ -1,0 +1,27 @@
+{
+  "couchbase": {
+    "connectionString": "couchbase://localhost",
+    "username": "Administrator",
+    "password": "password",
+    "bucketName": "myBucket",
+    "scopeName": "_default",
+    "collectionName": "_default",
+    "comment": "Default scope and collection are _default if not specified"
+  },
+  "couchbase-cloud": {
+    "connectionString": "couchbases://cb.your-cluster.cloud.couchbase.com",
+    "username": "your-username",
+    "password": "your-password",
+    "bucketName": "myBucket",
+    "scopeName": "myScope",
+    "collectionName": "myCollection",
+    "comment": "Use couchbases:// (with 's') for secure connections to Couchbase Cloud"
+  },
+  "couchbase-cluster": {
+    "connectionString": "couchbase://node1.couchbase.local,node2.couchbase.local,node3.couchbase.local",
+    "username": "app_user",
+    "password": "secure-password",
+    "bucketName": "production",
+    "comment": "Multi-node Couchbase cluster configuration"
+  }
+}

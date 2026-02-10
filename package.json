@@ -8,7 +8,8 @@
     "build": "tsc",
     "clean": "node -e \"try { require('fs').rmSync('dist', { recursive: true, force: true }); } catch (e) {}\"",
     "prebuild": "npm run clean",
-    "test": "echo \"No tests specified yet\" && exit 0"
+    "test": "echo \"No tests specified yet\" && exit 0",
+    "demo:database": "tsc database-demo.ts --outDir . --module commonjs --target ES2020 --esModuleInterop --skipLibCheck && node database-demo.js"
   },
   "keywords": [
     "artificial-intelligence",
@@ -21,5 +22,15 @@
   "devDependencies": {
     "@types/node": "^20.0.0",
     "typescript": "^5.0.0"
+  },
+  "optionalDependencies": {
+    "mongodb": "^6.0.0",
+    "redis": "^4.0.0",
+    "cassandra-driver": "^4.7.0",
+    "firebase-admin": "^12.0.0",
+    "@aws-sdk/client-dynamodb": "^3.0.0",
+    "@aws-sdk/lib-dynamodb": "^3.0.0",
+    "couchbase": "^4.3.0",
+    "neo4j-driver": "^5.0.0"
   }
 }

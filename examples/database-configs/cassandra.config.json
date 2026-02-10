@@ -1,0 +1,20 @@
+{
+  "cassandra": {
+    "contactPoints": ["127.0.0.1"],
+    "localDataCenter": "datacenter1",
+    "keyspace": "myapp",
+    "username": "cassandra",
+    "password": "cassandra",
+    "port": 9042,
+    "comment": "Ensure keyspace is created before connecting"
+  },
+  "cassandra-cluster": {
+    "contactPoints": ["node1.cassandra.local", "node2.cassandra.local", "node3.cassandra.local"],
+    "localDataCenter": "datacenter1",
+    "keyspace": "production",
+    "username": "app_user",
+    "password": "secure-password",
+    "port": 9042,
+    "comment": "Multi-node Cassandra cluster configuration"
+  }
+}

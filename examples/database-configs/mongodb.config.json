@@ -1,0 +1,17 @@
+{
+  "mongodb": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "myapp",
+    "username": "admin",
+    "password": "your-password-here",
+    "authSource": "admin",
+    "maxPoolSize": 10,
+    "ssl": false,
+    "comment": "For MongoDB Atlas, use uri instead: mongodb+srv://username:password@cluster.mongodb.net/database"
+  },
+  "mongodb-atlas": {
+    "uri": "mongodb+srv://username:password@cluster.mongodb.net/database?retryWrites=true&w=majority",
+    "database": "myapp"
+  }
+}

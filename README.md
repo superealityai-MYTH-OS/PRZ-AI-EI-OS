@@ -173,6 +173,11 @@ npm install redis
 # See DATABASE.md for complete installation guide
 ```
 
+**Run the demo:**
+```bash
+npm run demo:database
+```
+
 **📖 [Complete Database Documentation →](./DATABASE.md)**
 
 ## 📜 Compliance

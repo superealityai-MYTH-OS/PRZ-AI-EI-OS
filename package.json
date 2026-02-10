@@ -8,7 +8,8 @@
     "build": "tsc",
     "clean": "node -e \"try { require('fs').rmSync('dist', { recursive: true, force: true }); } catch (e) {}\"",
     "prebuild": "npm run clean",
-    "test": "echo \"No tests specified yet\" && exit 0"
+    "test": "echo \"No tests specified yet\" && exit 0",
+    "demo:database": "tsc database-demo.ts --outDir . --module commonjs --target ES2020 --esModuleInterop --skipLibCheck && node database-demo.js"
   },
   "keywords": [
     "artificial-intelligence",

@@ -7,6 +7,7 @@ dist/
 # Compiled files (TypeScript to JavaScript)
 *.js
 !example.js
+!eslint.config.js
 
 # TypeScript declaration files (build artifacts)
 *.d.ts

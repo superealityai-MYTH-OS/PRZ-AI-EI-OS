@@ -1,0 +1,30 @@
+{
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "roots": ["<rootDir>/src", "<rootDir>/lib"],
+  "testMatch": ["**/__tests__/**/*.test.ts", "**/*.test.ts"],
+  "transform": {
+    "^.+\\.tsx?$": ["ts-jest", {
+      "tsconfig": {
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true
+      }
+    }]
+  },
+  "collectCoverageFrom": [
+    "src/**/*.ts",
+    "lib/**/*.ts",
+    "!**/__tests__/**",
+    "!**/node_modules/**",
+    "!**/dist/**"
+  ],
+  "coverageThreshold": {
+    "global": {
+      "branches": 70,
+      "functions": 70,
+      "lines": 70,
+      "statements": 70
+    }
+  }
+}

@@ -46,7 +46,7 @@ describe('User Feedback Module', () => {
 
             const result = processFeedback(mockFeedback, []);
             expect(result.accepted).toBe(false);
-            expect(result.reason).toContain('Loop detected');
+            expect(result.reason).toContain('GOOSEGUARD: Redundant feedback pattern detected');
             expect(result.suggestedAction).toBe('Try something else');
         });
 
